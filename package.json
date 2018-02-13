@@ -1,0 +1,48 @@
+{
+  "name": "camper-leaderboard",
+  "version": "1.0.0",
+  "description": "Free Code Camp assignment to develop a React app that shows the campers who've earned the most brownie points in the past 30 days",
+  "main": "index.js",
+  "scripts": {
+    "watch-webpack": "webpack -w",
+    "launch-server": "node server.js",
+    "localtunnel": "lt --port 3000 --subdomain yuliyadev",
+    "start": "npm-run-all --parallel watch-webpack launch-server",
+    "share": "npm-run-all --parallel watch-webpack launch-server localtunnel"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YuliyaU/camperLeaderboard.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "React"
+  ],
+  "author": "Yuliya Ulanova",
+  "bugs": {
+    "url": "https://github.com/YuliyaU/camperLeaderboard/issues"
+  },
+  "homepage": "https://github.com/YuliyaU/camperLeaderboard#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "marked": "^0.3.12",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
+  },
+  "devDependencies": {
+    "autoprefixer": "^8.0.0",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^0.28.9",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "localtunnel": "^1.8.3",
+    "node-sass": "^4.7.2",
+    "npm-run-all": "^4.1.2",
+    "postcss-loader": "^2.1.0",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.20.1",
+    "webpack": "^3.10.0"
+  }
+}
