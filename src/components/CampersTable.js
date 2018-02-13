@@ -1,11 +1,12 @@
 import {Component} from 'react';
 import {CamperRow} from './CamperRow';
+import {getCampers} from '../api/campersApi';
 
 export class CampersTable extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            topTotalCampers: [{
+            campers: [{
                 "username":"sjames1958gm",
                 "img":"https://avatars1.githubusercontent.com/u/4639625?v=4",
                 "alltime":8597,
@@ -29,48 +30,28 @@ export class CampersTable extends Component {
                 "alltime":5061,
                 "recent":15,
                 "lastUpdate":"2018-02-03T19:03:03.159Z"}],
-            topRecentCampers: [{
-                "username":"sjames1958gm",
-                "img":"https://avatars1.githubusercontent.com/u/4639625?v=4",
-                "alltime":8597,
-                "recent":116,
-                "lastUpdate":"2018-02-03T18:14:36.182Z"
-            },{
-                "username":"rahsheen",
-                "img":"https://avatars1.githubusercontent.com/u/4641959?v=4",
-                "alltime":1053,
-                "recent":82,    
-                "lastUpdate":"2018-02-03T18:14:37.726Z"
-            },{
-                "username":"kbaig",
-                "img":"https://avatars3.githubusercontent.com/u/24844214?v=4",
-                "alltime":246,
-                "recent":72,
-                "lastUpdate":"2018-02-03T19:13:34.200Z"
-            },{
-                "username":"zcassini",
-                "img":"https://avatars1.githubusercontent.com/u/373576?v=4",
-                "alltime":1634,
-                "recent":67,
-                "lastUpdate":"2018-02-03T19:13:34.201Z"}],
             isTopRecentCampersDisplayed: true
         };
     }
 
-    render() {
-        var rank = 0, leaderbaord;
-
+    componentDidMount() {
         if (this.state.isTopRecentCampersDisplayed) {
-            leaderbaord = this.state.topRecentCampers.map((camper, index) => 
-            <CamperRow key={index}
-                       rank={rank+=1}
-                       camper={camper}/>);
+            getCampers('recent').then(results => {
+                this.setState({
+                    campers: results
+                });
+            });            
         } else {
-            leaderbaord = this.state.topTotalCampers.map((camper, index) => 
-            <CamperRow key={index}
-                       rank={rank+=1}
-                       camper={camper}/>); 
-        }
+            getCampers('alltime').then(results => {
+                this.setState({
+                    campers: results
+                });
+            });            
+        }        
+    }
+
+    render() {
+        var rank = 0;
 
         return (
             <table>
@@ -83,7 +64,10 @@ export class CampersTable extends Component {
                     </tr>
                 </thead>
                 <tbody>
-                    {leaderbaord}
+                    {this.state.campers.map((camper, index) => 
+                        <CamperRow key={index}
+                                rank={rank+=1}
+                                camper={camper}/>)}
                 </tbody>
             </table>
         );
