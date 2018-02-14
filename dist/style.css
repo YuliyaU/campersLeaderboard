@@ -20,6 +20,9 @@ footer {
   padding: 1.5rem 0; }
 
 /*** 2. Custom CSS Styles ***/
+.container {
+  overflow-x: auto; }
+
 .campers-caller {
   cursor: pointer; }
 
