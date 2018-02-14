@@ -1,0 +1,32 @@
+/**************************
+Table of contents:
+---------------------------
+0. Sass Variables
+1. CSS Reset
+2. Custom CSS Styles
+**************************/
+/*** 0. Sass variables ***/
+/*** 1. CSS Reset ***/
+body {
+  text-align: center; }
+
+h1 {
+  font-size: 3.0rem; }
+
+table {
+  margin: 0 auto; }
+
+footer {
+  padding: 1.5rem 0; }
+
+/*** 2. Custom CSS Styles ***/
+.campers-caller {
+  cursor: pointer; }
+
+.camper-name {
+  text-align: left; }
+  .camper-name span {
+    padding: 0 1.0rem; }
+
+.camper-name > * {
+  vertical-align: middle; }

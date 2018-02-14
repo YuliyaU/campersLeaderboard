@@ -2,6 +2,7 @@ import {Component} from 'react';
 import {CamperRow} from './CamperRow';
 import {getCampers} from '../api/campersApi';
 import GoTriangleDown from 'react-icons/lib/go/triangle-down';
+import '../stylesheets/campers-table.scss';
 
 export class CampersTable extends Component {
     constructor(props) {
@@ -80,12 +81,14 @@ export class CampersTable extends Component {
                     <tr>
                         <th>#</th>
                         <th>Camper's Name</th>
-                        <th><span onClick={(e) => 
-                            this.changeCampersTop(e, recent)}>
-                            Points in past 30 days {this.state.isTopRecentCampersDisplayed ? <GoTriangleDown /> : null}</span></th>
-                        <th><span onClick={(e) => 
-                            this.changeCampersTop(e, total)}>
-                            All time points {this.state.isTopRecentCampersDisplayed ? null : <GoTriangleDown />}</span></th>
+                        <th><span className="campers-caller" 
+                                  onClick={(e) => 
+                                    this.changeCampersTop(e, recent)}>
+                                    Points in past 30 days {this.state.isTopRecentCampersDisplayed ? <GoTriangleDown /> : null}</span></th>
+                        <th><span className="campers-caller" 
+                                  onClick={(e) => 
+                                    this.changeCampersTop(e, total)}>
+                                    All time points {this.state.isTopRecentCampersDisplayed ? null : <GoTriangleDown />}</span></th>
                     </tr>
                 </thead>
                 <tbody>
