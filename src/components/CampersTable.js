@@ -30,37 +30,59 @@ export class CampersTable extends Component {
                 "alltime":5061,
                 "recent":15,
                 "lastUpdate":"2018-02-03T19:03:03.159Z"}],
-            isTopRecentCampersDisplayed: true
+            isTopRecentCampersDisplayed: false
         };
+        this.changeCampersTop = this.changeCampersTop.bind(this);
+        this.displayCampers = this.displayCampers.bind(this);
     }
 
-    componentDidMount() {
-        if (this.state.isTopRecentCampersDisplayed) {
-            getCampers('recent').then(results => {
-                this.setState({
-                    campers: results
-                });
+    changeCampersTop(e, isTopRecentCampersDisplayedState) {        
+        if (this.state.isTopRecentCampersDisplayed !== isTopRecentCampersDisplayedState) {
+            this.displayCampers(this.state.isTopRecentCampersDisplayed);
+            this.setState({
+                isTopRecentCampersDisplayed: !this.state.isTopRecentCampersDisplayed               
             });            
         } else {
+            // Put campers sorting
+        }                       
+    }
+
+    displayCampers(isTopRecentCampersDisplayed) {
+        if (this.state.isTopRecentCampersDisplayed) {
             getCampers('alltime').then(results => {
                 this.setState({
                     campers: results
                 });
             });            
-        }        
+        } else {
+            getCampers('recent').then(results => {
+                this.setState({
+                    campers: results
+                });
+            });            
+        }              
+    }
+
+    componentWillMount() {
+        this.displayCampers(this.isTopRecentCampersDisplayed);        
+        this.setState({
+            isTopRecentCampersDisplayed: !this.state.isTopRecentCampersDisplayed
+        });  
     }
 
     render() {
-        var rank = 0;
-
+        var rank = 0, total = false, recent = true; 
+        // onClick isn't working
         return (
             <table>
                 <thead>
                     <tr>
                         <th>#</th>
                         <th>Camper's Name</th>
-                        <th>Points in past 30 days</th>
-                        <th>All time points</th>
+                        <th><span onClick={(e) => 
+                            this.changeCampersTop(e, recent)}>Points in past 30 days</span></th>
+                        <th><span onClick={(e) => 
+                            this.changeCampersTop(e, total)}>All time points</span></th>
                     </tr>
                 </thead>
                 <tbody>
