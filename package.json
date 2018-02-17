@@ -1,5 +1,5 @@
 {
-  "name": "camper-leaderboard",
+  "name": "campers-leaderboard",
   "version": "1.0.0",
   "description": "A React app that shows the FCC campers who've earned the most brownie points in the past 30 days",
   "main": "index.js",
@@ -12,7 +12,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/YuliyaU/camperLeaderboard.git"
+    "url": "git+https://github.com/YuliyaU/campersLeaderboard.git"
   },
   "keywords": [
     "JavaScript",
@@ -20,9 +20,9 @@
   ],
   "author": "Yuliya Ulanova",
   "bugs": {
-    "url": "https://github.com/YuliyaU/camperLeaderboard/issues"
+    "url": "https://github.com/YuliyaU/campersLeaderboard/issues"
   },
-  "homepage": "https://github.com/YuliyaU/camperLeaderboard#readme",
+  "homepage": "https://github.com/YuliyaU/campersLeaderboard#readme",
   "dependencies": {
     "express": "^4.16.2",
     "marked": "^0.3.12",
