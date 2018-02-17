@@ -44,9 +44,7 @@ export class CampersTable extends Component {
             this.setState({
                 isTopRecentCampersDisplayed: !this.state.isTopRecentCampersDisplayed               
             });            
-        } else {
-            // Put campers sorting
-        }                       
+        }                      
     }
 
     displayCampers(isTopRecentCampersDisplayed) {
@@ -74,7 +72,6 @@ export class CampersTable extends Component {
 
     render() {
         var rank = 0, total = false, recent = true; 
-        // onClick isn't working
         return (
             <table>
                 <thead>
